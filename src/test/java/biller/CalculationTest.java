@@ -30,5 +30,13 @@ public class CalculationTest {
 		items.add(new DrinkMenuItem("Cola", true, 0.50f, 1));
 		assertEquals(0.50d, billingService.calculateTotalBill(items), 0);
 	}
-
+	@Test
+	public void testTotalMultipleQtyMix() {
+		BillingCalculatorServiceImpl billingService = new BillingCalculatorServiceImpl();
+		ArrayList<MenuItem>items = new ArrayList<MenuItem>();
+		items.add(new DrinkMenuItem("Cola", true, 0.50f, 2));
+		items.add(new FoodMenuItem("Cheese Sandwich", false, 2.00f, 3));
+		items.add(new FoodMenuItem("Steak Sandwich", false, 4.50f, 2));
+		assertEquals(17.50d, billingService.calculateTotalBill(items), 0);
+	}
 }
